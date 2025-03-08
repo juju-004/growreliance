@@ -3,11 +3,21 @@
   themes: light --default;
 }
 
+@font-face {
+  font-family: "Jose";
+  src: url("../assets/fonts/JosefinSans.ttf");
+}
+@font-face {
+  font-family: "Josep";
+  src: url("../assets/fonts/JosefinSansL.ttf");
+}
 @theme {
   --color-c1: oklch(0.26 0.05 166.75 / 1);
   --color-c2: oklch(0.6 0.16 136.98);
   --color-c3: oklch(0.95 0 0);
   --animate-fadein: fIn 1s ease-in-out;
+  --font-jose-regular: font-family: "Josep" !important;
+  --font-jose: font-family: "Jose" !important;
 
   @keyframes fIn {
     0% {
@@ -19,10 +29,7 @@
   }
 }
 
-@font-face {
-  font-family: "Jose";
-  src: url("../assets/fonts/JosefinSans.ttf");
-}
+
 #nav.active {
   @apply !translate-y-[0%];
 }
@@ -46,10 +53,6 @@
 }
 .dock-active::after {
   @apply bg-c2 bottom-0 rounded-b-none rounded-t-lg h-2.5 translate-y-2 border-none;
-}
-@font-face {
-  font-family: "Josep";
-  src: url("../assets/fonts/JosefinSansL.ttf");
 }
 
 *,

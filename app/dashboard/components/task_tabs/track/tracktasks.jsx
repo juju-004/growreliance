@@ -53,7 +53,7 @@ function Tracktasks() {
           data.map((d, key) => (
             <li
               key={key}
-              className="list-row shadow-md flex items-center bg-white mt-3 !py-5"
+              className="list-row shadow-md flex justify-between items-center bg-white mt-3 !py-5"
             >
               <div>
                 <h3 className="font-semibold">{d.title}</h3>

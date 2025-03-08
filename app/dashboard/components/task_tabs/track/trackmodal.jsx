@@ -113,7 +113,7 @@ const TrackModal = ({ details, currentKey }) => {
     !show &&
       setTimeout(() => {
         setShow(true);
-      }, 500);
+      }, 900);
   }, [currentKey]);
 
   const closeModal = () => setShow(false);

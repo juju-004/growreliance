@@ -45,11 +45,7 @@ function Register() {
 
       <div className="px-5 text-center">
         Already have an accouunt?{" "}
-        <Link
-          onClick={() => setLoading(true)}
-          href={"/login"}
-          className="text-c2"
-        >
+        <Link onClick={() => setLoading(true)} href={"/"} className="text-c2">
           Sign in
         </Link>
       </div>

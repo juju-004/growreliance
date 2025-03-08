@@ -1,4 +1,5 @@
 import { ArrowPathIcon, BanknotesIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 import React from "react";
 
 export const Firstmenu = () => {
@@ -27,18 +28,20 @@ export const Firstmenu = () => {
 export const Secondmenu = () => {
   return (
     <div className="mx-4 bg-white  py-3 justify-between text-white pr-4 pl-6 my-4 flex rounded-3xl">
-      {Array(2)
-        .fill("")
-        .map((_, key) => (
-          <div key={key} className="text-black flex flex-col items-center">
-            {!key ? (
-              <BanknotesIcon className="size-7 opacity-75" />
-            ) : (
-              <ArrowPathIcon className="size-7 opacity-75" />
-            )}
-            <span>{!key ? "Withdrawal" : "Transaction History"}</span>
-          </div>
-        ))}
+      {["withdraw", "transaction_history"].map((link, key) => (
+        <Link
+          key={key}
+          href={`/dashboard/${link}`}
+          className="text-black btn btn-ghost py-1 !h-auto flex flex-col items-center"
+        >
+          {!key ? (
+            <BanknotesIcon className="size-6 opacity-75" />
+          ) : (
+            <ArrowPathIcon className="size-6 opacity-75" />
+          )}
+          <span>{!key ? "Withdrawal" : "Transaction History"}</span>
+        </Link>
+      ))}
     </div>
   );
 };

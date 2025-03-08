@@ -37,7 +37,7 @@ function Assigntasks() {
         data.map((d, key) => (
           <li
             key={key}
-            className="list-row !py-5 shadow-md flex items-center bg-white mt-3"
+            className="list-row !py-5 shadow-md justify-between flex items-center bg-white mt-3"
           >
             <div>
               <h3 className="font-semibold">{d.title}</h3>

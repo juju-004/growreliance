@@ -75,16 +75,18 @@ const MainNav = () => (
 function Nav() {
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
-      if (
-        window.scrollY > 159 &&
-        !document.getElementById("nav").classList.contains("active")
-      ) {
-        document.getElementById("nav").classList.add("active");
-      } else if (
-        window.scrollY < 160 &&
-        document.getElementById("nav").classList.contains("active")
-      ) {
-        document.getElementById("nav").classList.remove("active");
+      if (document.getElementById("nav")) {
+        if (
+          window.scrollY > 159 &&
+          !document.getElementById("nav").classList.contains("active")
+        ) {
+          document.getElementById("nav").classList.add("active");
+        } else if (
+          window.scrollY < 160 &&
+          document.getElementById("nav").classList.contains("active")
+        ) {
+          document.getElementById("nav").classList.remove("active");
+        }
       }
     });
   }, []);
