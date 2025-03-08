@@ -6,6 +6,7 @@
 @theme {
   --color-c1: oklch(0.26 0.05 166.75 / 1);
   --color-c2: oklch(0.6 0.16 136.98);
+  --color-c3: oklch(0.95 0 0);
   --animate-fadein: fIn 1s ease-in-out;
 
   @keyframes fIn {
@@ -21,6 +22,30 @@
 @font-face {
   font-family: "Jose";
   src: url("../assets/fonts/JosefinSans.ttf");
+}
+#nav.active {
+  @apply !translate-y-[0%];
+}
+.tab {
+  @apply p-0;
+}
+.tabs {
+  @apply justify-around;
+}
+.tab::after {
+  @apply px-3 py-1;
+}
+.tab:checked {
+  @apply bg-c2/0;
+}
+.tab:checked:after {
+  @apply bg-c2  text-white;
+}
+.tab:checked:before {
+  @apply bg-transparent border-0 duration-150 text-white;
+}
+.dock-active::after {
+  @apply bg-c2 bottom-0 rounded-b-none rounded-t-lg h-2.5 translate-y-2 border-none;
 }
 @font-face {
   font-family: "Josep";

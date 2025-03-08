@@ -5,16 +5,21 @@ import FormInput from "@/components/input/form-input";
 import FormLoader from "@/components/loaders/form-loader";
 import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 function Login() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const submitAction = async (formData) => {
+    setLoading(true);
     const password = formData.get("password");
     const email = formData.get("email");
 
     console.log(password, email);
+
+    router.push("/dashboard");
   };
 
   return (
