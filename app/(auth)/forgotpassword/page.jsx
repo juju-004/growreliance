@@ -1,9 +1,9 @@
 "use client";
 
-import FormButton from "@/components/button/form-button";
-import AuthHeader from "@/components/header/auth-header";
-import FormInput from "@/components/input/form-input";
-import FormLoader from "@/components/loaders/form-loader";
+import FormButton from "../components/button/form-button";
+import AuthHeader from "../components/header/auth-header";
+import FormInput from "../components/input/form-input";
+import FormLoader from "../components/loaders/form-loader";
 import { EnvelopeOpenIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import React, { useState } from "react";

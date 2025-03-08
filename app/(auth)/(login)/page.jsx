@@ -1,8 +1,8 @@
 "use client";
 
-import FormButton from "@/components/button/form-button";
-import FormInput from "@/components/input/form-input";
-import FormLoader from "@/components/loaders/form-loader";
+import FormButton from "../components/button/form-button";
+import FormInput from "../components/input/form-input";
+import FormLoader from "../components/loaders/form-loader";
 import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
