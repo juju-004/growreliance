@@ -26,17 +26,22 @@ function ForgotPassword() {
   return (
     <>
       {loading && <FormLoader />}
-      <AuthHeader
-        text={"Forgot Password"}
-        subText={"Enter your email account to reset password"}
-      />
-      <form action={submitAction} className="w-full px-5 py-6">
-        <FormInput name={"email"} placeholder={"Email Address"} />
-        <FormButton text={"Continue"} />
-      </form>
+      <div className="md:flex md:h-screen">
+        <AuthHeader
+          text={"Forgot Password"}
+          subText={"Enter your email account to reset password"}
+        />
+        <form
+          action={submitAction}
+          className="w-full px-5 py-6 sm:px-14 md:px-8 md:w-md md:pt-30 md:h-screen md:overflow-scroll"
+        >
+          <FormInput name={"email"} placeholder={"Email Address"} />
+          <FormButton text={"Continue"} />
+        </form>
+      </div>
 
       <dialog id="my_modal_2" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box text-center rounded-t-4xl flex flex-col justify-center items-center  overflow-visible relative">
+        <div className="modal-box text-center rounded-t-4xl sm:rounded-b-4xl flex flex-col justify-center items-center  overflow-visible relative">
           <span className="size-20 text-white fx p-6  rounded-3xl bg-c1 absolute -top-[40px]">
             <EnvelopeOpenIcon />
           </span>
@@ -46,7 +51,7 @@ function ForgotPassword() {
             to your account
           </p>
           <form method="dialog" className="w-full">
-            <Link href={"/login"}>
+            <Link href={"/"}>
               <FormButton text={"Done"} className={"mt-5 "} />
             </Link>
           </form>

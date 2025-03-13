@@ -1,4 +1,5 @@
 "use client";
+import { XCircleIcon } from "@heroicons/react/24/solid";
 import React, { useEffect, useState } from "react";
 
 const TrackModal = ({ details, currentKey }) => {
@@ -119,12 +120,17 @@ const TrackModal = ({ details, currentKey }) => {
   const closeModal = () => setShow(false);
 
   return (
-    <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
+    <dialog id="my_modal_3" className="modal modal-bottom">
       {details && (
-        <div className="modal-box relative h-[calc(100vh-120px)] rounded-t-4xl flex flex-col">
-          <h3 className="font-bold text-xl pt-2 border-b-3 pb-1 border-c2">
-            {details.title}
-          </h3>
+        <div className="modal-box relative max-w-[700px] mx-auto h-[calc(100vh-120px)] rounded-t-4xl flex flex-col">
+          <div className="font-bold flex justify-between items-center text-xl pt-2 border-b-3 pb-1 border-c2">
+            <h3>{details.title}</h3>
+            <form onClick={closeModal} method="dialog">
+              <button className="btn btn-ghost pl-2 border-1 border-black/5">
+                <XCircleIcon className="size-7 opacity-20 text-black" /> close
+              </button>
+            </form>
+          </div>
           <div className="w-full overflow-y-scroll flex-1 pb-8 pt-2">
             {dummyData.map((d, key) => (
               <div
@@ -181,14 +187,6 @@ const TrackModal = ({ details, currentKey }) => {
                 </div>
               </div>
             ))}
-          </div>
-          <div className="flex gap-5 absolute bottom-0 inset-x-0 px-10 py-3 from-transparent to-white bg-gradient-to-b">
-            <button disabled className="btn flex-1 btn-success text-white">
-              Submit
-            </button>
-            <form onClick={closeModal} method="dialog">
-              <button className="btn btn-error text-white flex-1">Leave</button>
-            </form>
           </div>
         </div>
       )}

@@ -21,10 +21,13 @@ function Dock() {
     { icon: <UserIcon className="size-7 opacity-80" />, text: "Me" },
   ];
   return (
-    <div className="dock dock-md bg">
+    <div className="dock dock-md md:shadow-md md:absolute md:w-[90%] md:left-1/2 md:-translate-x-1/2 overflow-hidden md:top-0 md:bottom-auto md:rounded-b-4xl bg">
       {items.map((i, key) => {
         return (
-          <button key={key} className={key == 0 ? "dock-active" : ""}>
+          <button
+            key={key}
+            className={`!lg:flex ${key == 1 ? "dock-active" : ""}`}
+          >
             {i.icon}
             <span className="dock-label">{i.text}</span>
           </button>

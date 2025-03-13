@@ -1,5 +1,44 @@
 "use client";
+import { XCircleIcon } from "@heroicons/react/24/solid";
 import React, { useEffect, useState } from "react";
+
+const Form = ({ data }) => {
+  return (
+    <div className="collapse-content text-sm px-2 peer-checked:bg-c3/50">
+      <form className="mb-3 px-2 flex flex-col gap-2">
+        {data.map((input, k) =>
+          input.options ? (
+            <React.Fragment key={k}>
+              <label htmlFor={input.name}>{input.label}</label>
+              <div className="w-full flex justify-between">
+                {input.options.map((opt, ke) => (
+                  <div key={ke} className="flex gap-3">
+                    <input
+                      type="radio"
+                      name={input.name}
+                      className="radio checked:text-c2"
+                    />
+                    <label htmlFor={input.name}>{opt}</label>
+                  </div>
+                ))}
+              </div>
+            </React.Fragment>
+          ) : (
+            <React.Fragment key={k}>
+              <label htmlFor={input.name}>{input.label}</label>
+              <input
+                type="text"
+                name={input.name}
+                placeholder=""
+                className="input bg-transparent w-full focus:border-c2 focus:ring-0 focus:outline-0 "
+              />
+            </React.Fragment>
+          )
+        )}
+      </form>
+    </div>
+  );
+};
 
 const AssignModal = ({ details, currentKey }) => {
   const [show, setShow] = useState(false);
@@ -119,12 +158,17 @@ const AssignModal = ({ details, currentKey }) => {
   const closeModal = () => setShow(false);
 
   return (
-    <dialog id="my_modal_4" className="modal modal-bottom sm:modal-middle">
+    <dialog id="my_modal_4" className="modal modal-bottom ">
       {details && (
-        <div className="modal-box relative h-[calc(100vh-120px)] rounded-t-4xl flex flex-col">
-          <h3 className="font-bold text-xl pt-2 border-b-3 pb-1 border-c2">
-            {details.title}
-          </h3>
+        <div className="modal-box relative max-w-[700px] mx-auto h-[calc(100vh-120px)] rounded-t-4xl flex flex-col">
+          <div className="font-bold flex justify-between items-center text-xl pt-2 border-b-3 pb-1 border-c2">
+            <h3>{details.title}</h3>
+            <form onClick={closeModal} method="dialog">
+              <button className="btn btn-ghost pl-2 border-1 border-black/5">
+                <XCircleIcon className="size-7 opacity-20 text-black" /> close
+              </button>
+            </form>
+          </div>
           <div className="w-full overflow-y-scroll flex-1 pb-8 pt-2">
             {dummyData.map((d, key) => (
               <div
@@ -134,7 +178,7 @@ const AssignModal = ({ details, currentKey }) => {
                 {show && (
                   <input
                     type="radio"
-                    name="accordion-2"
+                    name="accordion-1"
                     className="peer"
                     defaultChecked={key ? false : true}
                   />
@@ -143,52 +187,12 @@ const AssignModal = ({ details, currentKey }) => {
                   <span className="size-7 border-c2 border-2 rounded-full fx ">
                     {key + 1}
                   </span>{" "}
-                  {d.title}
+                  {d.title}{" "}
                 </div>
-                <div className="collapse-content text-sm px-2 peer-checked:bg-c3/50">
-                  <form className="mb-3 px-2 flex flex-col gap-2">
-                    {d.inputs.map((input, k) =>
-                      input.options ? (
-                        <React.Fragment key={k}>
-                          <label htmlFor={input.name}>{input.label}</label>
-                          <div className="w-full flex justify-between">
-                            {input.options.map((opt, ke) => (
-                              <div key={ke} className="flex gap-3">
-                                <input
-                                  type="radio"
-                                  name={input.name}
-                                  className="radio checked:text-c2"
-                                />
-
-                                <label htmlFor={input.name}>{opt}</label>
-                              </div>
-                            ))}
-                          </div>
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment key={k}>
-                          <label htmlFor={input.name}>{input.label}</label>
-                          <input
-                            type="text"
-                            name={input.name}
-                            placeholder=""
-                            className="input bg-transparent w-full focus:border-c2 focus:ring-0 focus:outline-0 "
-                          />
-                        </React.Fragment>
-                      )
-                    )}
-                  </form>
-                </div>
+                {<Form data={d.inputs} />}
               </div>
             ))}
-          </div>
-          <div className="flex gap-5 absolute bottom-0 inset-x-0 px-10 py-3 from-transparent to-white bg-gradient-to-b">
-            <button disabled className="btn flex-1 btn-success text-white">
-              Submit
-            </button>
-            <form onClick={closeModal} method="dialog">
-              <button className="btn btn-error text-white flex-1">Leave</button>
-            </form>
+            <button className="btn ml-4 mt-3 bg-c2 text-white">Submit</button>
           </div>
         </div>
       )}

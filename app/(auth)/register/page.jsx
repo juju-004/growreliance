@@ -29,25 +29,37 @@ function Register() {
   return (
     <>
       {loading && <FormLoader />}
-      <AuthHeader text={"Register"} subText={"Create your account"} />
-      <form action={submitAction} className="w-full px-5 py-6">
-        <FormInput name={"firstname"} type={"text"} placeholder={"FirstName"} />
-        <FormInput name={"lastname"} type={"text"} placeholder={"LastName"} />
-        <FormInput name={"email"} placeholder={"Email Address"} />
-        <FormInput name={"password"} placeholder={"Password"} />
-        <FormInput
-          name={"confirmpassword"}
-          type={"password"}
-          placeholder={"Confirm password"}
-        />
-        <FormButton text={"Register"} />
-      </form>
-
-      <div className="px-5 text-center">
-        Already have an accouunt?{" "}
-        <Link onClick={() => setLoading(true)} href={"/"} className="text-c2">
-          Sign in
-        </Link>
+      <div className="md:flex md:h-screen">
+        <AuthHeader text={"Register"} subText={"Create your account"} />
+        <form
+          action={submitAction}
+          className="w-full px-5 py-6 sm:px-14 md:px-8 md:w-md md:pt-30 md:h-screen md:overflow-scroll"
+        >
+          <FormInput
+            name={"firstname"}
+            type={"text"}
+            placeholder={"FirstName"}
+          />
+          <FormInput name={"lastname"} type={"text"} placeholder={"LastName"} />
+          <FormInput name={"email"} placeholder={"Email Address"} />
+          <FormInput name={"password"} placeholder={"Password"} />
+          <FormInput
+            name={"confirmpassword"}
+            type={"password"}
+            placeholder={"Confirm password"}
+          />
+          <FormButton text={"Register"} />
+          <div className="px-5 text-center mt-5">
+            Already have an accouunt?{" "}
+            <Link
+              onClick={() => setLoading(true)}
+              href={"/"}
+              className="text-c2"
+            >
+              Sign in
+            </Link>
+          </div>
+        </form>
       </div>
     </>
   );
