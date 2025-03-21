@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import AssignModal from "./assignmodal";
+import Modal from "./modal";
 
-function Assigntasks() {
+function Tracktasks() {
   const [data, setData] = useState([]);
   const [currentData, setCurrentData] = useState({
     data: null,
@@ -32,7 +32,7 @@ function Assigntasks() {
       key: Math.round(Math.random() * 10000000),
     });
 
-    document.getElementById("my_modal_4").showModal();
+    document.getElementById("trackmodal").showModal();
   };
 
   useEffect(getData, [data]);
@@ -70,15 +70,19 @@ function Assigntasks() {
                 onClick={() => openModal(key)}
                 className="btn bg-c2 w-20 btn-ghost !rounded-sm text-white px-2"
               >
-                Details
+                Track
               </button>
             </li>
           ))
         )}
       </ul>
-      <AssignModal details={currentData.data} currentKey={currentData.key} />
+      <Modal
+        details={currentData.data}
+        id={"trackmodal"}
+        currentKey={currentData.key}
+      />
     </>
   );
 }
 
-export default Assigntasks;
+export default Tracktasks;

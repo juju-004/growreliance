@@ -3,7 +3,6 @@
 import FormButton from "../components/button/form-button";
 import FormInput from "../components/input/form-input";
 import FormLoader from "../components/loaders/form-loader";
-import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -39,16 +38,8 @@ function Login() {
             Login to your account
           </h2>
           <form action={submitAction} className="w-full">
-            <FormInput
-              icon={<EnvelopeIcon className="size-4" />}
-              name={"email"}
-              placeholder={"Your email"}
-            />
-            <FormInput
-              icon={<LockClosedIcon className="size-4" />}
-              name={"password"}
-              placeholder={"Your pasword"}
-            />
+            <FormInput name={"email"} placeholder={"Your email"} />
+            <FormInput name={"password"} placeholder={"Your pasword"} />
             <FormButton text={"Sign in"} />
           </form>
           <div className="px-5 mt-2 text-center">

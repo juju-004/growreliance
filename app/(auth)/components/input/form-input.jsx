@@ -2,7 +2,7 @@
 
 import React from "react";
 
-function FormInput({ name, icon, type, placeholder }) {
+function FormInput({ name, type, placeholder }) {
   return (
     <div className="my-7">
       <input

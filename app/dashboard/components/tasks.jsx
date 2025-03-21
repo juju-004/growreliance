@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Assigntasks from "./task_tabs/assign/assigntasks";
-import Tracktasks from "./task_tabs/track/tracktasks";
+import Assigntasks from "./task_tabs/assigntasks";
+import Tracktasks from "./task_tabs/tracktasks";
 import Completedtasks from "./task_tabs/completedtasks";
 
 function Tasks() {
