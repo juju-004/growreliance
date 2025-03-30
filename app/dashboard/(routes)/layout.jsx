@@ -1,12 +1,9 @@
-"use client";
-
 import React from "react";
-import Dock from "./components/dock";
-import Nav from "./components/nav";
-import { Firstmenu, Secondmenu } from "./components/menu";
-import Tasks from "./components/tasks";
+import Nav from "../components/nav";
+import { Firstmenu, Secondmenu } from "../components/menu";
+import Dock from "../components/dock";
 
-function Dashboard() {
+function Layout({ children }) {
   return (
     <section className=" bg-c3">
       <section className="min-h-screen max-w-5xl md:px-6 mx-auto md:flex md:items-start md:gap-4  bg-c3">
@@ -16,7 +13,9 @@ function Dashboard() {
           <Secondmenu />
         </div>
         <div className="md:flex-1 md:relative">
-          <Tasks />
+          <div className="bg-white h-[calc(100vh-80px)] overflow-hidden md:shadow-xl md:mt-20  rounded-t-[50px] w-full">
+            {children}
+          </div>
           <Dock />
         </div>
       </section>
@@ -24,4 +23,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Layout;

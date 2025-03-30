@@ -1,6 +1,6 @@
 "use client";
 import { XCircleIcon } from "@heroicons/react/24/solid";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import surveyData from "@/assets/data/surveyData.json";
 
 const Form = ({ data }) => {
@@ -41,62 +41,54 @@ const Form = ({ data }) => {
   );
 };
 
-const Modal = ({ details, currentKey, id }) => {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    !show &&
-      setTimeout(() => {
-        setShow(true);
-      }, 900);
-  }, [currentKey]);
-
-  const closeModal = () => setShow(false);
-
+const Modal = ({ details, id }) => {
   return (
-    <dialog id={id} className="modal modal-bottom ">
-      {details && (
-        <div className="modal-box relative max-w-[700px] mx-auto h-[calc(100vh-120px)] rounded-t-4xl flex flex-col">
-          <div className="font-bold flex justify-between items-center text-xl pt-2 border-b-3 pb-1 border-c2">
-            <h3>{details.title}</h3>
-            <form onClick={closeModal} method="dialog">
-              <button className="btn btn-ghost md:pl-2 md:border-1 btn-circle md:btn-square md:border-black/5">
+    <>
+      <input type="checkbox" id={id} className="modal-toggle" />
+      <div className="modal modal-bottom " role="dialog">
+        {details && (
+          <div className="modal-box relative max-w-[700px] mx-auto h-[calc(100vh-120px)] rounded-t-4xl flex flex-col">
+            <div className="font-bold flex justify-between items-center text-xl pt-2 border-b-3 pb-1 border-c2">
+              <h3>{details.title}</h3>
+
+              <label
+                className="btn btn-ghost md:pl-2 md:border-1 border-0  md:border-black/5"
+                htmlFor={id}
+              >
                 <XCircleIcon className="size-7 opacity-20 text-black" />{" "}
                 <span className="md:block hidden">close</span>
-              </button>
-            </form>
-          </div>
-          <div className="w-full overflow-y-scroll flex-1 pb-8 pt-2">
-            {surveyData.map((d, key) => (
-              <div
-                key={key}
-                className="collapse mb-2 collapse-arrow bg-base-100 border border-base-300"
-              >
-                {show && (
+              </label>
+            </div>
+            <div className="w-full overflow-y-scroll flex-1 pb-8 pt-2">
+              {surveyData.map((d, key) => (
+                <div
+                  key={key}
+                  className="collapse mb-2 collapse-arrow bg-base-100 border border-base-300"
+                >
                   <input
                     type="radio"
                     name="accordion-1"
                     className="peer"
                     defaultChecked={key ? false : true}
                   />
-                )}
-                <div className="collapse-title flex items-center gap-3 font-semibold peer-checked:bg-c3/50">
-                  <span className="size-7 border-c2 border-2 rounded-full fx ">
-                    {key + 1}
-                  </span>{" "}
-                  {d.title}{" "}
+                  <div className="collapse-title flex items-center gap-3 font-semibold peer-checked:bg-c3/50">
+                    <span className="size-7 border-c2 border-2 rounded-full fx ">
+                      {key + 1}
+                    </span>{" "}
+                    {d.title}{" "}
+                  </div>
+                  {<Form data={d.inputs} />}
                 </div>
-                {<Form data={d.inputs} />}
-              </div>
-            ))}
-            <button className="btn ml-4 mt-3 bg-c2 text-white">Submit</button>
+              ))}
+              <button className="btn ml-4 mt-3 bg-c2 text-white">Submit</button>
+            </div>
           </div>
-        </div>
-      )}
-      <form onClick={closeModal} method="dialog" className="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
+        )}
+        <label className="modal-backdrop" htmlFor={id}>
+          Close
+        </label>
+      </div>
+    </>
   );
 };
 

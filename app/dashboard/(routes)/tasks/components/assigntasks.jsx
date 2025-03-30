@@ -3,12 +3,9 @@
 import React, { useEffect, useState } from "react";
 import Modal from "./modal";
 
-function Tracktasks() {
+function Assigntasks() {
   const [data, setData] = useState([]);
-  const [currentData, setCurrentData] = useState({
-    data: null,
-    key: Math.round(Math.random() * 10000000),
-  });
+  const [currentData, setCurrentData] = useState(null);
 
   const getData = () => {
     if (data.length === 0) {
@@ -24,15 +21,6 @@ function Tracktasks() {
         setData(dummydata);
       }, 3000);
     }
-  };
-
-  const openModal = (key) => {
-    setCurrentData({
-      data: data[key],
-      key: Math.round(Math.random() * 10000000),
-    });
-
-    document.getElementById("trackmodal").showModal();
   };
 
   useEffect(getData, [data]);
@@ -66,23 +54,20 @@ function Tracktasks() {
                 </div>
               </div>
 
-              <button
-                onClick={() => openModal(key)}
+              <label
+                onClick={() => setCurrentData(data[key])}
+                htmlFor="assignmodal"
                 className="btn bg-c2 w-20 btn-ghost !rounded-sm text-white px-2"
               >
-                Track
-              </button>
+                Details
+              </label>
             </li>
           ))
         )}
       </ul>
-      <Modal
-        details={currentData.data}
-        id={"trackmodal"}
-        currentKey={currentData.key}
-      />
+      <Modal details={currentData} id={"assignmodal"} />
     </>
   );
 }
 
-export default Tracktasks;
+export default Assigntasks;

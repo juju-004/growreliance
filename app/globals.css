@@ -54,7 +54,9 @@
 .dock-active::after {
   @apply bg-c2 bottom-0 rounded-b-none rounded-t-lg h-2.5 translate-y-2 border-none;
 }
-
+.input, .textarea, .select {
+  @apply border-c1/0 focus:border-c2 focus:outline-0 focus:ring-0;
+}
 *,
 * > * {
   font-family: "Jose";
