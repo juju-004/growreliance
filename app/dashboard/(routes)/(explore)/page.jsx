@@ -106,15 +106,8 @@ const AgricultureNewsFeed = () => {
 
   return (
     <div className="max-w-4xl mx-auto flex flex-col h-full p-4">
-      {/* Header */}
-      <header className="mb-5">
-        <p className="text-gray-600 ml-4 mt-2">
-          Latest farming research and policy updates
-        </p>
-      </header>
-
       {/* Search and Filter */}
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
+      <div className="flex flex-col md:mt-3 md:flex-row gap-4 mb-6">
         <div className="relative flex-1">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center">
             <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
